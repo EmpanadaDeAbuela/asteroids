@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://drlkx7miftosx"]
+[gd_scene load_steps=4 format=3 uid="uid://drlkx7miftosx"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://c2iliifnjmaqk" path="res://Sprites/anotherHim.jpg" id="2_0a6ny"]
+[ext_resource type="PackedScene" uid="uid://d4cmn31ehxbvr" path="res://Prefabs/player.tscn" id="2_83o5u"]
+[ext_resource type="PackedScene" uid="uid://d3157h7nddi8b" path="res://Prefabs/asteroid.tscn" id="3_kvuek"]
+
+[node name="game" type="Node2D"]
+
+[node name="AnotherHim" type="Sprite2D" parent="."]
+position = Vector2(470, 490)
+scale = Vector2(1.45, 1.45)
+texture = ExtResource("2_0a6ny")
+
+[node name="player" parent="." instance=ExtResource("2_83o5u")]
+position = Vector2(549, 444)
+
+[node name="asteroid" parent="." instance=ExtResource("3_kvuek")]
+position = Vector2(193, 518)
