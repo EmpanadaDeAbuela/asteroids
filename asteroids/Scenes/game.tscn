@@ -15,4 +15,4 @@ texture = ExtResource("2_0a6ny")
 position = Vector2(549, 444)
 
 [node name="asteroid" parent="." instance=ExtResource("3_kvuek")]
-position = Vector2(193, 518)
+position = Vector2(344, 347)
