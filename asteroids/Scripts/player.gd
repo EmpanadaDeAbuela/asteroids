@@ -7,6 +7,11 @@ extends CharacterBody2D
 
 var bulletInst = preload("res://Prefabs/bullet.tscn")
 
+
+func _ready() -> void:
+	$AnimatedSprite2D.play()
+
+
 func _physics_process(delta: float) -> void:
 	
 	# movimiento
@@ -48,7 +53,7 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	var bullet = bulletInst.instantiate()
-	var offset = Vector2.RIGHT.rotated(rotation) * 20  # 20 píxeles adelante
+	var offset = Vector2.RIGHT.rotated(rotation) * 50  # 20 píxeles adelante
 	bullet.global_position = global_position + offset
 	bullet.rotation = rotation
 	get_parent().add_child(bullet)

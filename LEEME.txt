@@ -1,0 +1,5 @@
+Hola, en estos proyectos en los que no tenemos que inventar un juego quise aprovechar para probar estéticas visuales. A mí me gusta el blanco y negro, además de que cuando hice el pong se me ocurrió el coso del modo oscuro y planeo que en el futuro sea una mecánica del juego que vaya a hacer. (También hago la música)
+
+En el pong probé el estilo dibujado a mano y es demasiado tedioso para un resultado nada sorprendente, me hace acordar a omori.
+
+En este se me había ocurrido algo más simple pero después encontré esta estética glitched monochromatic art que me gustó. Por ahora me va gustando más que la anterior y siento que quedaría bien con la mecánica de invertir los colores, aunque algunos sprites tienen demasiado detalle para su tamaño.
