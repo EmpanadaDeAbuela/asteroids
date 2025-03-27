@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://rx6ukj830fs3"]
+
+[ext_resource type="Script" path="res://scripts/asteroid.gd" id="1_cxckw"]
+[ext_resource type="Texture2D" uid="uid://cc6xnyo8h1nnd" path="res://Sprites/asteroid.png" id="2_unycm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oeclr"]
+radius = 101.316
+
+[node name="smallAs" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_cxckw")
+size = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_unycm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_oeclr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_oeclr")
+debug_color = Color(0.809015, 0.0022119, 0.988674, 0.42)
