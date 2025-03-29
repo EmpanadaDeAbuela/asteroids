@@ -15,4 +15,4 @@ texture = ExtResource("1_w0iid")
 position = Vector2(549, 444)
 
 [node name="bigAs" parent="." instance=ExtResource("3_bqy0d")]
-position = Vector2(603, 714)
+position = Vector2(436, 533)
