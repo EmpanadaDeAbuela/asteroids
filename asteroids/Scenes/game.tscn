@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d4ehidfubbijj" path="res://Sprites/space.png" id="1_w0iid"]
 [ext_resource type="PackedScene" uid="uid://d4cmn31ehxbvr" path="res://Prefabs/player.tscn" id="2_83o5u"]
-[ext_resource type="PackedScene" uid="uid://d3157h7nddi8b" path="res://Prefabs/bigAs.tscn" id="3_kvuek"]
+[ext_resource type="PackedScene" uid="uid://d3157h7nddi8b" path="res://Prefabs/asteroid.tscn" id="3_bqy0d"]
 
 [node name="game" type="Node2D"]
 
@@ -14,5 +14,5 @@ texture = ExtResource("1_w0iid")
 [node name="player" parent="." instance=ExtResource("2_83o5u")]
 position = Vector2(549, 444)
 
-[node name="bigAs" parent="." instance=ExtResource("3_kvuek")]
-position = Vector2(266, 403)
+[node name="bigAs" parent="." instance=ExtResource("3_bqy0d")]
+position = Vector2(603, 714)

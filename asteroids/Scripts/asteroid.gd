@@ -4,45 +4,68 @@ var movementVector := Vector2(0, -1)
 
 var speed: int
 
-enum AsSize{LARGE, MEDIUM, SMALL}
-@export var size: AsSize
+@export var size: int
 
-@onready var sprite = $Sprite2D
-
-var asteroideMedio = preload("res://Prefabs/avgAs.tscn")
-var asteroideChico = preload("res://Prefabs/smallAs.tscn")
+var nuevoAs = preload("res://Prefabs/asteroid.tscn")
 
 func _ready() -> void:
+	adjustSizes()
 	rotation = randf_range(0, 2*PI)
 	#print(rotation_degrees)
-	
-	adjustSizes()
 
 func _process(delta: float) -> void:
 	global_position += movementVector.rotated(rotation) * speed * delta
+	
+	var screenSize = get_viewport_rect().size*1.5 #para que no parezca que los grandes desaparecen
+	
+	if global_position.y < 0 or global_position.y > screenSize.y:
+		queue_free()
+		#print("bala fuera de límites y")
+		
+	if global_position.x < 0 or global_position.x > screenSize.x:
+		queue_free()
 
 func adjustSizes():
 	match size:
-		AsSize.LARGE:
+		2:
 			speed = randf_range(50, 100)
-		AsSize.MEDIUM:
+			$".".scale = Vector2(1, 1)
+		1:
 			speed = randf_range(101, 150)
-		AsSize.SMALL:
+			$".".scale = Vector2(0.5, 0.5)
+		0:
 			speed = randf_range(151, 200)
+			$".".scale = Vector2(0.2, 0.2)
+	print(speed)
 
 func _on_body_entered(body: Node2D) -> void:
-	if size == AsSize.LARGE:
-		print("mediano")
-		var s = asteroideMedio.instantiate()
-		get_parent().call_deferred("add_child", s)
+	
+	if body.name == "player":
+		body.queue_free()
+		return
+	
+	if size == 2:
+		#print("mediano")
+		
+		instanciateAs(1)
+		instanciateAs(1)
 		queue_free()
 	
-	elif size == AsSize.MEDIUM:
+	elif size == 1:
 		print("chiquitungui")
-		var g = asteroideChico.instantiate()
-		get_parent().call_deferred("add_child", g)
+		
+		instanciateAs(0)
+		instanciateAs(0)
 		queue_free()
 		
-	elif size == AsSize.SMALL:
-		print("naaa")
+	elif size == 0:
+		#print("naaa")
 		queue_free()
+	
+	body.queue_free()
+
+func instanciateAs(newSize: int):
+	var na = nuevoAs.instantiate()
+	na.size = newSize
+	na.position = position
+	get_parent().call_deferred("add_child", na)
