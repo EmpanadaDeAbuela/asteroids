@@ -2,27 +2,28 @@ extends Area2D
 
 var movementVector := Vector2(0, -1)
 var speed: int
-var angle:= 0.0
+#var angle:= 0.0
 @export var size: int
 
 var nuevoAs = preload("res://Prefabs/asteroid.tscn")
 
 func _ready() -> void:
+	rotation = randf_range(0, 2*PI)
 	adjustSizes()
-	adjustRotation() #anda raro, sería más claro si supiera llamar a una función luego de instanciar el nuevo asteroide
-	print(angle)
-	print(rotation)
+	#adjustRotation() #anda raro, sería más claro si supiera llamar a una función luego de instanciar el nuevo asteroide
+	#print(angle)
+	#print(rotation)
 
 func _process(delta: float) -> void:
 	global_position += movementVector.rotated(rotation) * speed * delta
 	
 	var screenSize = get_viewport_rect().size*1.5 #para que no parezca que los grandes desaparecen
 	
-	if global_position.y < 0 or global_position.y > screenSize.y:
+	if global_position.y < 0 or global_position.y > screenSize.y*1.5:
 		queue_free()
-		#print("bala fuera de límites y")
+		print("asteroide fuera")
 		
-	if global_position.x < 0 or global_position.x > screenSize.x:
+	if global_position.x < 0 or global_position.x > screenSize.x*1.5:
 		queue_free()
 
 func adjustSizes():
@@ -31,21 +32,21 @@ func adjustSizes():
 			speed = randf_range(50, 100)
 			$".".scale = Vector2(1, 1)
 		1:
-			speed = randf_range(101, 150)
+			speed = randf_range(100, 500)
 			$".".scale = Vector2(0.5, 0.5)
 		0:
-			speed = randf_range(151, 200)
+			speed = randf_range(500, 1000)
 			$".".scale = Vector2(0.2, 0.2)
 	#print(speed)
 
-func adjustRotation():
-	var offset = 15 # Variación aleatoria entre -15° y 15°
-	
-	if size != 2:
-		angle += deg_to_rad(randf_range(-offset, offset))
-		rotation = angle
-	else:
-		rotation = randf_range(0, 2*PI)
+#func adjustRotation():
+#	var offset = 15 # Variación aleatoria entre -15° y 15°
+#	
+#	if size != 2:
+#		angle += deg_to_rad(randf_range(-offset, offset))
+#		rotation = angle
+#	else:
+#		rotation = randf_range(0, 2*PI)
 
 func _on_body_entered(body: Node2D) -> void:
 	
@@ -55,9 +56,9 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	Global.points += 1
 	
-	var direction = ($"../player".global_position - global_position).normalized()
-	angle = rad_to_deg(direction.angle())
-	print("ángulo al explotar: " + str(angle))
+	#var direction = ($"../player".global_position - global_position).normalized()
+	#angle = rad_to_deg(direction.angle())
+	#print("ángulo al explotar: " + str(angle))
 	
 	if size == 2:
 		#print("mediano")
@@ -83,5 +84,5 @@ func instanciateAs(newSize: int):
 	var na = nuevoAs.instantiate()
 	na.size = newSize
 	na.position = position
-	na.angle = angle
+	#na.angle = angle
 	get_parent().call_deferred("add_child", na)

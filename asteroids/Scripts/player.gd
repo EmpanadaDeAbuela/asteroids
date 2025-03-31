@@ -43,16 +43,25 @@ func _physics_process(delta: float) -> void:
 	
 	# disparar
 	
-	if Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("shoot2"):
+	if (Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("shoot2")) and $cooldownTimer.is_stopped():
 		shoot()
 		
 	if Input.is_action_just_pressed("burstUp") or Input.is_action_just_pressed("burstDown"):
+		
+		######################################
+		# PODRÍA SER UNA HABILIDAD TIPO DASH #
+		######################################
+		
 		shoot()
-		await get_tree().create_timer(0.2).timeout 
+		#await get_tree().create_timer(0.2s).timeout #no sé cómo apareció esto en mi código 
 
 func shoot():
+	$cooldownTimer.start()
 	var bullet = bulletInst.instantiate()
 	var offset = Vector2.RIGHT.rotated(rotation) * 50  # 20 píxeles adelante
 	bullet.global_position = global_position + offset
 	bullet.rotation = rotation
 	get_parent().add_child(bullet)
+
+#func _on_cooldown_timer_timeout() -> void:
+	#print("fs") # Replace with function body.
