@@ -19,11 +19,11 @@ func _process(delta: float) -> void:
 	
 	var screenSize = get_viewport_rect().size*1.5 #para que no parezca que los grandes desaparecen
 	
-	if global_position.y < 0 or global_position.y > screenSize.y*1.5:
+	if global_position.y < -100 or global_position.y > screenSize.y:
 		queue_free()
 		print("asteroide fuera")
 		
-	if global_position.x < 0 or global_position.x > screenSize.x*1.5:
+	if global_position.x < 0 or global_position.x > screenSize.x:
 		queue_free()
 
 func adjustSizes():
@@ -54,7 +54,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		return
 	
-	Global.points += 1
+	
 	
 	#var direction = ($"../player".global_position - global_position).normalized()
 	#angle = rad_to_deg(direction.angle())
@@ -66,6 +66,7 @@ func _on_body_entered(body: Node2D) -> void:
 		instanciateAs(1)
 		instanciateAs(1)
 		queue_free()
+		Global.points += 15
 	
 	elif size == 1:
 		#print("chiquitungui")
@@ -73,10 +74,12 @@ func _on_body_entered(body: Node2D) -> void:
 		instanciateAs(0)
 		instanciateAs(0)
 		queue_free()
+		Global.points += 30
 		
 	elif size == 0:
 		#print("naaa")
 		queue_free()
+		Global.points += 60
 	
 	body.queue_free()
 

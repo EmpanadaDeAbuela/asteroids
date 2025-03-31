@@ -48,7 +48,7 @@ position = Vector2(1122, 280)
 scale = Vector2(1.02422, 1.01771)
 
 [node name="asSpawner8" parent="spawners" instance=ExtResource("4_m8qw4")]
-position = Vector2(758, -87.495)
+position = Vector2(721, -83)
 scale = Vector2(1.02422, 1.01771)
 
 [node name="Label" type="Label" parent="."]
@@ -56,4 +56,3 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 41
 text = "69"
-metadata/_edit_use_anchors_ = true

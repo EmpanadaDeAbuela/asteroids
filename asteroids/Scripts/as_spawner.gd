@@ -1,7 +1,7 @@
 extends Node2D
 
 var asteroid = preload("res://Prefabs/asteroid.tscn")
-var awaitTime = 1
+var awaitTime = 5
 
 func _ready() -> void:
 	$spawnTimer.wait_time = awaitTime
