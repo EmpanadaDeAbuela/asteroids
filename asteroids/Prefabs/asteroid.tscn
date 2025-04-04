@@ -8,7 +8,7 @@ radius = 101.316
 
 [node name="bigAs" type="Area2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_33lis")
 size = 2
 

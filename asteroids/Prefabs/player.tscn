@@ -49,4 +49,9 @@ shape = SubResource("CircleShape2D_g3du7")
 wait_time = 0.2
 one_shot = true
 
+[node name="cooldownPower" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="cooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="cooldownPower" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="cooldownPower" to="." method="_on_cooldown_power_timeout"]

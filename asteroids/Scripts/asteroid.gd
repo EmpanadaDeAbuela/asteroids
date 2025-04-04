@@ -19,11 +19,11 @@ func _process(delta: float) -> void:
 	
 	var screenSize = get_viewport_rect().size*1.5 #para que no parezca que los grandes desaparecen
 	
-	if global_position.y < -100 or global_position.y > screenSize.y:
+	if global_position.y < -100 or global_position.y > screenSize.y*1.5:
 		queue_free()
 		print("asteroide fuera")
 		
-	if global_position.x < 0 or global_position.x > screenSize.x:
+	if global_position.x < 0 or global_position.x > screenSize.x*1.5:
 		queue_free()
 
 func adjustSizes():

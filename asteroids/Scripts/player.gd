@@ -46,15 +46,16 @@ func _physics_process(delta: float) -> void:
 	if (Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("shoot2")) and $cooldownTimer.is_stopped():
 		shoot()
 		
-	if Input.is_action_just_pressed("burstUp") or Input.is_action_just_pressed("burstDown"):
-		
-		######################################
-		# PODRÍA SER UNA HABILIDAD TIPO DASH #
-		######################################
-		
-		shoot()
-		#await get_tree().create_timer(0.2s).timeout #no sé cómo apareció esto en mi código 
+	if (Global.powered):
+		$cooldownPower.start()
+		if Input.is_action_just_pressed("burstUp") or Input.is_action_just_pressed("burstDown"):
+			shoot()
+			#await get_tree().create_timer(0.2s).timeout #no sé cómo apareció esto en mi código 
 
+func _on_cooldown_power_timeout() -> void:
+	Global.powered = false
+	print(Global.powered)
+	
 func shoot():
 	$cooldownTimer.start()
 	var bullet = bulletInst.instantiate()
