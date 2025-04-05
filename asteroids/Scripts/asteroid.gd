@@ -5,6 +5,9 @@ var speed: int
 #var angle:= 0.0
 @export var size: int
 
+@onready var colshape = $CollisionShape2D
+@onready var sprite = $Sprite2D
+
 var nuevoAs = preload("res://Prefabs/asteroid.tscn")
 
 func _ready() -> void:
@@ -17,20 +20,36 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position += movementVector.rotated(rotation) * speed * delta
 	
-	var screenSize = get_viewport_rect().size*1.5 #para que no parezca que los grandes desaparecen
+	var screenSize = get_viewport_rect().size
+	var radius = (colshape.shape as CircleShape2D).radius * scale.x
+	#print(radius)
 	
-	if global_position.y < -100 or global_position.y > screenSize.y*1.5:
-		queue_free()
-		print("asteroide fuera")
+	if (global_position.y+radius) < 0:
+		global_position.y = (screenSize.y+radius*0.999) #andá a saber por qué si es 1 no le gusta
+		print(radius)
 		
-	if global_position.x < 0 or global_position.x > screenSize.x*1.5:
-		queue_free()
+	if (global_position.y-radius) > screenSize.y:
+		global_position.y = -radius
+		
+	if (global_position.x+radius < 0):
+		global_position.x = (screenSize.x+radius)
+		 
+	if (global_position.x-radius) > screenSize.x:
+		global_position.x = -radius
+	
+	#if global_position.y < -100 or global_position.y > screenSize.y*1.5:
+	#	queue_free()
+	#	print("asteroide fuera")
+	#	
+	#if global_position.x < 0 or global_position.x > screenSize.x*1.5:
+	#	queue_free()
 
 func adjustSizes():
 	match size:
 		2:
 			speed = randf_range(50, 100)
 			$".".scale = Vector2(1, 1)
+			#sprite.texture = preload()
 		1:
 			speed = randf_range(100, 500)
 			$".".scale = Vector2(0.5, 0.5)
@@ -49,12 +68,6 @@ func adjustSizes():
 #		rotation = randf_range(0, 2*PI)
 
 func _on_body_entered(body: Node2D) -> void:
-	
-	if body.name == "player":
-		body.queue_free()
-		return
-	
-	
 	
 	#var direction = ($"../player".global_position - global_position).normalized()
 	#angle = rad_to_deg(direction.angle())

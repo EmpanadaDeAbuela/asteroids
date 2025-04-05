@@ -5,7 +5,11 @@ extends CharacterBody2D
 @export var acceleration = 40.0
 @export var maxSpeed := 600.0
 
+var powered = false
+
 var bulletInst = preload("res://Prefabs/bullet.tscn")
+
+@onready var colshape = $CollisionShape2D
 
 func _ready() -> void:
 	$AnimatedSprite2D.play()
@@ -21,15 +25,20 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	var screenSize = get_viewport_rect().size
+	var radius = (colshape.shape as CircleShape2D).radius * scale.x
 	
-	if global_position.y< 0:
-		global_position.y = screenSize.y
-	if global_position.y > screenSize.y:
-		global_position.y = 0 
-	if global_position.x < 0:
-		global_position.x = screenSize.x 
-	if global_position.x > screenSize.x:
-		global_position.x = 0 
+	if (global_position.y+radius) < 0:
+		global_position.y = (screenSize.y+radius*0.999) #andá a saber por qué si es 1 no le gusta
+		print(radius)
+		
+	if (global_position.y-radius) > screenSize.y:
+		global_position.y = -radius
+		
+	if (global_position.x+radius < 0):
+		global_position.x = (screenSize.x+radius)
+		 
+	if (global_position.x-radius) > screenSize.x:
+		global_position.x = -radius
 		
 	if inputVector.y == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, 3)
@@ -43,15 +52,20 @@ func _physics_process(delta: float) -> void:
 	if (Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("shoot2")) and $cooldownTimer.is_stopped():
 		shoot()
 		
-	if (Global.powered):
-		$cooldownPower.start()
-		if Input.is_action_just_pressed("burstUp") or Input.is_action_just_pressed("burstDown"):
-			shoot()
+	if (Input.is_action_just_pressed("burstUp") or Input.is_action_just_pressed("burstDown")) and powered:
+		shoot()
 			#await get_tree().create_timer(0.2s).timeout #no sé cómo apareció esto en mi código 
 
+func empoderar():
+	powered = true
+	$cooldownPower.start()
+	#print("e")
+	$AnimatedSprite2D.modulate = Color(1, 0, 1)
+
 func _on_cooldown_power_timeout() -> void:
-	Global.powered = false
-	print(Global.powered)
+	powered = false
+	print(powered)
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func shoot():
 	$cooldownTimer.start()
@@ -63,3 +77,9 @@ func shoot():
 
 #func _on_cooldown_timer_timeout() -> void:
 	#print("fs") # Replace with function body.
+	
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "asteroid":
+		queue_free()
+	else:
+		empoderar()
