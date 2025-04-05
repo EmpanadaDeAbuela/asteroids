@@ -52,6 +52,20 @@ scale = Vector2(1.02422, 1.01771)
 position = Vector2(758, -87.495)
 scale = Vector2(1.02422, 1.01771)
 
+[node name="printTimer" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 18.4255
+anchor_top = 1.89474
+anchor_right = 18.5745
+anchor_bottom = 2.49123
+offset_left = 866.0
+offset_top = 108.0
+offset_right = 913.0
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 41
+text = "69"
+metadata/_edit_use_anchors_ = true
+
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0

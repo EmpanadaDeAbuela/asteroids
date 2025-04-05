@@ -13,7 +13,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	# movimiento
-	
 	var inputVector := Vector2(Input.get_axis("move_left","move_right"), Input.get_axis("move_forward", "move_backward"))
 
 	velocity += inputVector * acceleration
@@ -38,11 +37,9 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, 3)
 
 	# que mire al mouse (no puedo creer que sea una función, y yo usando unity...)
-	
 	look_at(get_global_mouse_position())
 	
 	# disparar
-	
 	if (Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("shoot2")) and $cooldownTimer.is_stopped():
 		shoot()
 		
@@ -55,7 +52,7 @@ func _physics_process(delta: float) -> void:
 func _on_cooldown_power_timeout() -> void:
 	Global.powered = false
 	print(Global.powered)
-	
+
 func shoot():
 	$cooldownTimer.start()
 	var bullet = bulletInst.instantiate()
