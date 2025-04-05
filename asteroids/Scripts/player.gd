@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		global_position.y = -radius
 		
 	if (global_position.x+radius < 0):
-		global_position.x = (screenSize.x+radius)
+		global_position.x = (screenSize.x+radius*0.999)
 		 
 	if (global_position.x-radius) > screenSize.x:
 		global_position.x = -radius
@@ -58,12 +58,16 @@ func _physics_process(delta: float) -> void:
 
 func empoderar():
 	powered = true
+	speed = 600.0
+	maxSpeed = 1000.0
 	$cooldownPower.start()
 	#print("e")
 	$AnimatedSprite2D.modulate = Color(1, 0, 1)
 
 func _on_cooldown_power_timeout() -> void:
 	powered = false
+	speed = 300.0
+	maxSpeed = 600.0
 	print(powered)
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
@@ -83,3 +87,4 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		queue_free()
 	else:
 		empoderar()
+		print("power")

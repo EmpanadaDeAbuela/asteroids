@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://drlkx7miftosx"]
+[gd_scene load_steps=5 format=3 uid="uid://drlkx7miftosx"]
 
 [ext_resource type="Script" path="res://Scripts/scoreManager.gd" id="1_njphc"]
 [ext_resource type="Texture2D" uid="uid://d4ehidfubbijj" path="res://Sprites/space.png" id="1_w0iid"]
 [ext_resource type="PackedScene" uid="uid://d4cmn31ehxbvr" path="res://Prefabs/player.tscn" id="2_83o5u"]
 [ext_resource type="PackedScene" uid="uid://d3157h7nddi8b" path="res://Prefabs/asteroid.tscn" id="5_8fpe3"]
-[ext_resource type="PackedScene" uid="uid://c2xe8ml21bf0y" path="res://Prefabs/powerUp.tscn" id="5_bvivl"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_njphc")
@@ -24,9 +23,6 @@ offset_bottom = 23.0
 theme_override_font_sizes/font_size = 41
 text = "69"
 metadata/_edit_use_anchors_ = true
-
-[node name="powerUp" parent="." instance=ExtResource("5_bvivl")]
-position = Vector2(393, 680)
 
 [node name="bigAs" parent="." instance=ExtResource("5_8fpe3")]
 position = Vector2(290, 276)
