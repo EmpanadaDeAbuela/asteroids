@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://drlkx7miftosx"]
+[gd_scene load_steps=7 format=3 uid="uid://drlkx7miftosx"]
 
 [ext_resource type="Script" path="res://Scripts/scoreManager.gd" id="1_njphc"]
 [ext_resource type="Texture2D" uid="uid://d4ehidfubbijj" path="res://Sprites/space.png" id="1_w0iid"]
 [ext_resource type="PackedScene" uid="uid://d4cmn31ehxbvr" path="res://Prefabs/player.tscn" id="2_83o5u"]
-[ext_resource type="PackedScene" uid="uid://d3157h7nddi8b" path="res://Prefabs/asteroid.tscn" id="5_8fpe3"]
+[ext_resource type="FontFile" uid="uid://rl8rt4fgrhtp" path="res://Fonts/cubic/cubic.ttf" id="4_gw221"]
+[ext_resource type="PackedScene" uid="uid://daf4qa5mos7qd" path="res://Prefabs/as_spawner.tscn" id="5_66jkd"]
+[ext_resource type="Script" path="res://Scripts/spawner_manager.gd" id="5_wqc7g"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_njphc")
@@ -14,15 +16,46 @@ position = Vector2(825.33, 501.5)
 scale = Vector2(0.885417, 0.949074)
 texture = ExtResource("1_w0iid")
 
-[node name="player" parent="." instance=ExtResource("2_83o5u")]
-position = Vector2(549, 444)
-
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 41
-text = "69"
-metadata/_edit_use_anchors_ = true
+offset_right = 1000.0
+offset_bottom = 1000.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 0.392157)
+theme_override_fonts/font = ExtResource("4_gw221")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="bigAs" parent="." instance=ExtResource("5_8fpe3")]
-position = Vector2(290, 276)
+[node name="player" parent="." instance=ExtResource("2_83o5u")]
+position = Vector2(500, 500)
+
+[node name="spawnerManager" type="Node2D" parent="."]
+script = ExtResource("5_wqc7g")
+
+[node name="spawnTimer" type="Timer" parent="spawnerManager"]
+one_shot = true
+
+[node name="asSpawner1" parent="spawnerManager" instance=ExtResource("5_66jkd")]
+position = Vector2(-127, 384)
+
+[node name="asSpawner2" parent="spawnerManager" instance=ExtResource("5_66jkd")]
+position = Vector2(-123, 899)
+
+[node name="asSpawner5" parent="spawnerManager" instance=ExtResource("5_66jkd")]
+position = Vector2(112, -112)
+
+[node name="asSpawner6" parent="spawnerManager" instance=ExtResource("5_66jkd")]
+position = Vector2(732, -110)
+
+[node name="asSpawner3" parent="spawnerManager" instance=ExtResource("5_66jkd")]
+position = Vector2(1122, 93)
+
+[node name="asSpawner4" parent="spawnerManager" instance=ExtResource("5_66jkd")]
+position = Vector2(1135, 618)
+
+[node name="asSpawner7" parent="spawnerManager" instance=ExtResource("5_66jkd")]
+position = Vector2(913, 1099)
+
+[node name="asSpawner8" parent="spawnerManager" instance=ExtResource("5_66jkd")]
+position = Vector2(384, 1101)

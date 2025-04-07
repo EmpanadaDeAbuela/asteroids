@@ -4,11 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cymwvq4pqky0r" path="res://Sprites/medieburger.png" id="2_t7lyd"]
 
 [node name="asSpawner" type="Node2D"]
+light_mask = 9
 script = ExtResource("1_uxtbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_t7lyd")
-
-[node name="spawnTimer" type="Timer" parent="."]
-one_shot = true
