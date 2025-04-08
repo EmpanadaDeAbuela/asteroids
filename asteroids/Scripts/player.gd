@@ -57,14 +57,16 @@ func _physics_process(delta: float) -> void:
 			#await get_tree().create_timer(0.2s).timeout #no sé cómo apareció esto en mi código 
 
 func empoderar():
+	Global.isPowered = true
 	powered = true
 	speed = 600.0
 	maxSpeed = 1000.0
 	$cooldownPower.start()
 	#print("e")
-	$AnimatedSprite2D.modulate = Color(1, 0, 1)
+	$AnimatedSprite2D.modulate = Color(1, 0, 0.5)
 
 func _on_cooldown_power_timeout() -> void:
+	Global.isPowered = false
 	powered = false
 	speed = 300.0
 	maxSpeed = 600.0

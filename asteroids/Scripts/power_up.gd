@@ -6,8 +6,9 @@ var speed := 200.0
 @onready var colshape = $CollisionShape2D
 
 func _ready() -> void:
-	pass # Replace with function body.
+	$AnimatedSprite2D.play()
 	rotation = randf_range(0, 2*PI)
+	$AnimatedSprite2D.rotation += 0.0001
 	
 func _process(delta: float) -> void:
 	global_position += movementVector.rotated(rotation) * speed * delta

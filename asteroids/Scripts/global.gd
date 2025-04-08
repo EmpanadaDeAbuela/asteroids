@@ -3,7 +3,7 @@ extends Node
 var points = 0
 var record = 0
 
-
+var isPowered = false
 
 # 1 segundo vivo 				= +10 puntos
 # asteroide grande eliminado	= +15 puntos

@@ -12,6 +12,7 @@ var nuevoAs = preload("res://Prefabs/asteroid.tscn")
 var powerUp = preload("res://Prefabs/powerUp.tscn")
 
 func _ready() -> void:
+	$AnimatedSprite2D.play()
 	rotation = randf_range(0, 2*PI)
 	adjustSizes()
 	#adjustRotation() #anda raro, sería más claro si supiera llamar a una función luego de instanciar el nuevo asteroide
@@ -19,6 +20,13 @@ func _ready() -> void:
 	#print(rotation)
 
 func _process(delta: float) -> void:
+	if size == 2:
+		$AnimatedSprite2D.rotation += 0.0005
+	elif size == 1:
+		$AnimatedSprite2D.rotation += 0.001
+	elif size == 0:
+		$AnimatedSprite2D.rotation += 0.01
+		
 	global_position += movementVector.rotated(rotation) * speed * delta
 	
 	var screenSize = get_viewport_rect().size
@@ -84,7 +92,7 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 		Global.points += 15
 		
-		if randi() % 10 == 0:
+		if randi() % 15 == 0:
 			instanciatePowerUp()
 	
 	elif size == 1:
@@ -95,7 +103,7 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 		Global.points += 30
 		
-		if randi() % 10 == 0:
+		if randi() % 15 == 0:
 			instanciatePowerUp()
 		
 	elif size == 0:

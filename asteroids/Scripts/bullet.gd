@@ -9,10 +9,14 @@ func _physics_process(delta):
 	var screenSize = get_viewport_rect().size
 	if global_position.y < 0 or global_position.y > screenSize.y:
 		queue_free()
-		Global.points -= 50
+		
+		if !Global.isPowered:
+			Global.points -= 50
 		#print("bala fuera de límites y")
 		
 	if global_position.x < 0 or global_position.x > screenSize.x:
 		queue_free()
-		Global.points -= 50
+		
+		if !Global.isPowered:
+			Global.points -= 50
 		#print("bala fuera de límites x")

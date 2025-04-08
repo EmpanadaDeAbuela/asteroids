@@ -1,7 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3157h7nddi8b"]
+[gd_scene load_steps=8 format=3 uid="uid://d3157h7nddi8b"]
 
 [ext_resource type="Script" path="res://Scripts/asteroid.gd" id="1_33lis"]
 [ext_resource type="Texture2D" uid="uid://cc6xnyo8h1nnd" path="res://Sprites/asteroid.png" id="2_5foj4"]
+[ext_resource type="Texture2D" uid="uid://dk8qjuntcc6sp" path="res://Sprites/bigAs0.png" id="3_ubowb"]
+[ext_resource type="Texture2D" uid="uid://dsxqar3y83chw" path="res://Sprites/bigAs1.png" id="4_hexdp"]
+[ext_resource type="Texture2D" uid="uid://ch5s8jq4hwfcd" path="res://Sprites/bigAs2.png" id="5_8w2iq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5uirf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ubowb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8w2iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hexdp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeclr"]
 radius = 101.316
@@ -13,8 +33,15 @@ script = ExtResource("1_33lis")
 size = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_5foj4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_5uirf")
+frame = 1
+frame_progress = 0.00166924
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oeclr")
