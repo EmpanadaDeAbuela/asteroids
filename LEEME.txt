@@ -1,5 +1,23 @@
-Hola, en estos proyectos en los que no tenemos que inventar un juego quise aprovechar para probar estéticas visuales. A mí me gusta el blanco y negro, además de que cuando hice el pong se me ocurrió el coso del modo oscuro y planeo que en el futuro sea una mecánica del juego que vaya a hacer. (También hago la música)
+Algunas cosas que quiero señalar acerca del jeugo:
 
-En el pong probé el estilo dibujado a mano y es demasiado tedioso para un resultado nada sorprendente, me hace acordar a omori.
+1- El juego tiene una música minimalista de fondo, a su vez, cada vez que disparás suena una nota aleatoria, se me ocurrió que los disparos sean como la melodía de la canción
 
-En este se me había ocurrido algo más simple pero después encontré esta estética glitched monochromatic art que me gustó. Por ahora me va gustando más que la anterior y siento que quedaría bien con la mecánica de invertir los colores, aunque algunos sprites tienen demasiado detalle para su tamaño.
+También, al usar la ametralladora, las notas se reducen a 4 para formar un acorde consonante (y que no sea una nube de ruido).
+
+2- estuve explorando el tema de los efectos de audio para añadir reverberación y que la gente no quede sorda cuando destruye 453895 asteroides mientras usa la ametralladora.
+
+3- Estoy orgulloso de cómo quedó el tutorial :D.
+
+Intentos fallidos:
+
+1- en el script del player intenté que si un asteroide te choca mientras estás empoderado no mueras, sino que solo se te salga el efecto, el código sigue estando pero como notarás no anda xd.
+
+2- También intenté que cuando mueras ocurra un fade out al menú, no funcionó, lo único que quedó es que espere tres segundos y no sea instantáneo (Script global).
+
+3- Se me había ocurrido aplicar lo de composición que explicaste en clase, teniendo un nodo con script que verifique si chocó con algo, para así usarlo en las balas, el powerUp, los asteoirdes y los ovnis (que no añadí pero se me había ocurrido que te dispararan), pero explotó todo, ya el juego estaba bastante avanzado para que funcione.
+
+Referencias:
+
+Meteora es un albumazo 10/10
+
+Medieburger no es un albumazo pero también 10/10
