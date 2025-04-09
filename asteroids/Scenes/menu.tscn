@@ -112,6 +112,22 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_m8ejk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_pcorr")
 text = "QUIT"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 900.0
+offset_bottom = 430.0
+alignment = 1
+
+[node name="record" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fc7oa")
+theme_override_font_sizes/font_size = 30
+text = "best score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/playButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/settingsButton" to="." method="_on_settings_button_pressed"]

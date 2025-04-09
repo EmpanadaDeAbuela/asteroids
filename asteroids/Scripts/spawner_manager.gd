@@ -15,27 +15,27 @@ func _process(delta: float) -> void:
 		match num:
 			1:
 				$asSpawner1.spawn()
-				print("Salió 1")
+				#print("Salió 1")
 			2:
 				$asSpawner2.spawn()
-				print("Salió 2")
+				#print("Salió 2")
 			3:
 				$asSpawner3.spawn()
-				print("Salió 3")
+				#print("Salió 3")
 			4:
 				$asSpawner4.spawn()
-				print("Salió 4")
+				#print("Salió 4")
 			5:
 				$asSpawner5.spawn()
-				print("Salió 5")
+				#print("Salió 5")
 			6:
 				$asSpawner6.spawn()
-				print("Salió 6")
+				#print("Salió 6")
 			7:
 				$asSpawner7.spawn()
-				print("Salió 7")
+				#print("Salió 7")
 			8:
 				$asSpawner8.spawn()
-				print("Salió 8")
+				#print("Salió 8")
 				
 		$spawnTimer.start()

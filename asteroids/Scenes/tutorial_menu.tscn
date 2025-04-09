@@ -1,4 +1,42 @@
-[gd_scene format=3 uid="uid://3uph451bsbut"]
+[gd_scene load_steps=14 format=3 uid="uid://3uph451bsbut"]
+
+[ext_resource type="Texture2D" uid="uid://d4ehidfubbijj" path="res://Sprites/space.png" id="1_licsj"]
+[ext_resource type="Script" path="res://Scripts/tutorial_menu.gd" id="1_ohx6g"]
+[ext_resource type="FontFile" uid="uid://rl8rt4fgrhtp" path="res://Fonts/cubic/cubic.ttf" id="2_1dlne"]
+[ext_resource type="PackedScene" uid="uid://d4cmn31ehxbvr" path="res://Prefabs/player.tscn" id="2_rcwcu"]
+[ext_resource type="Texture2D" uid="uid://dk8qjuntcc6sp" path="res://Sprites/bigAs0.png" id="3_511iu"]
+[ext_resource type="Script" path="res://Scripts/asteroidEstatua.gd" id="3_ycogs"]
+[ext_resource type="Texture2D" uid="uid://dsxqar3y83chw" path="res://Sprites/bigAs1.png" id="4_i5pj5"]
+[ext_resource type="Texture2D" uid="uid://ch5s8jq4hwfcd" path="res://Sprites/bigAs2.png" id="5_a3klm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s8whj"]
+radius = 166.675
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3656"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_511iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i5pj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a3klm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lda6h"]
+bg_color = Color(1, 1, 1, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx4xt"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5g7e"]
+bg_color = Color(1, 1, 1, 0)
 
 [node name="tutorial_menu" type="Control"]
 layout_mode = 3
@@ -7,3 +45,117 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ohx6g")
+
+[node name="AnotherHim" type="Sprite2D" parent="."]
+self_modulate = Color(0.556953, 0.556953, 0.556953, 1)
+position = Vector2(825.33, 501.5)
+scale = Vector2(0.885417, 0.949074)
+texture = ExtResource("1_licsj")
+
+[node name="player" parent="." instance=ExtResource("2_rcwcu")]
+position = Vector2(710, 395)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Tu objetivo es hacer la mayor cantidad de puntos."
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Los puntos se suman al destruír asteroides y consumir objetos, pero se pierden al errar balas."
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "
++1 punto / segundo vivo
+ 
+asteroide grande eliminado = +10 puntos
+asteroide mediano eliminado = +25 puntos
+asteroide chico eliminado = +50 puntos
+
+bala perdida = -15 puntos
+
+destruír power up = +100 puntossss"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Te movés con WASD y apuntás con el mouse."
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Si chocás con un asteroide perdés. (No lo hagas)"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 93.5
+offset_top = 533.0
+offset_right = 510.5
+offset_bottom = 559.0
+theme_override_font_sizes/font_size = 18
+text = "
+
+
+
+
+Atravesar una pared te lleva al otro lado"
+
+[node name="asteroidEstatua" type="Area2D" parent="."]
+position = Vector2(694, 703)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("3_ycogs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroidEstatua"]
+shape = SubResource("CircleShape2D_s8whj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="asteroidEstatua"]
+sprite_frames = SubResource("SpriteFrames_b3656")
+frame = 2
+frame_progress = 0.548123
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 865.675
+offset_right = -1.0
+offset_bottom = -84.325
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Button" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1dlne")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/hover = SubResource("StyleBoxFlat_lda6h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bx4xt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h5g7e")
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]

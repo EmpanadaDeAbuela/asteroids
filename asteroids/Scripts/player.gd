@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var maxSpeed := 600.0
 
 var powered = false
+var canDie = true
 
 var bulletInst = preload("res://Prefabs/bullet.tscn")
 
@@ -66,11 +67,14 @@ func empoderar():
 	$AnimatedSprite2D.modulate = Color(1, 0, 0.5)
 
 func _on_cooldown_power_timeout() -> void:
+	desempoderar()
+
+func desempoderar():
 	Global.isPowered = false
 	powered = false
 	speed = 300.0
 	maxSpeed = 600.0
-	print(powered)
+	#print(powered)
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func shoot():
@@ -85,8 +89,20 @@ func shoot():
 	#print("fs") # Replace with function body.
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "asteroid":
+	if area.name == "asteroid": #intenté que si te "mata" un asteroide no mueras, sino que solo te saque el efecto powered
+		#print(canDie)
+		if powered and canDie:
+			desempoderar()
+			canDie = false
+			print(canDie)
+			#await get_tree().create_timer(1.0).timeout
+			canDie = true
+			print(canDie)
+		else:
+			queue_free()
+	elif area.name == "asteroidEstatua":
+		$"../VBoxContainer/Label4".text = "Los humanos son curiosos..."
 		queue_free()
 	else:
 		empoderar()
-		print("power")
+		#print("power")

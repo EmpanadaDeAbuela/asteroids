@@ -18,5 +18,5 @@ func _physics_process(delta):
 		queue_free()
 		
 		if !Global.isPowered:
-			Global.points -= 50
+			Global.points -= 15
 		#print("bala fuera de límites x")

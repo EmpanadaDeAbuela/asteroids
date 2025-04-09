@@ -1,5 +1,7 @@
 extends Control
 
+func _process(delta: float) -> void:
+	$HBoxContainer/record.text = "Record: " + str(Global.record)
 
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/game.tscn") # Replace with function body.

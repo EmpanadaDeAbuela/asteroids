@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	
 	if (global_position.y+radius) < 0:
 		global_position.y = (screenSize.y+radius*0.999) #andá a saber por qué si es 1 no le gusta
-		print(radius)
+		#print(radius)
 		
 	if (global_position.y-radius) > screenSize.y:
 		global_position.y = -radius
@@ -81,16 +81,16 @@ func _on_body_entered(body: Node2D) -> void:
 	#var direction = ($"../player".global_position - global_position).normalized()
 	#angle = rad_to_deg(direction.angle())
 	#print("ángulo al explotar: " + str(angle))
-	
-	
-	
+		
 	if size == 2:
 		#print("mediano")
 		
 		instanciateAs(1)
 		instanciateAs(1)
 		queue_free()
-		Global.points += 15
+		
+		if !body.name == "player":
+			Global.points += 10
 		
 		if randi() % 15 == 0:
 			instanciatePowerUp()
@@ -101,7 +101,9 @@ func _on_body_entered(body: Node2D) -> void:
 		instanciateAs(0)
 		instanciateAs(0)
 		queue_free()
-		Global.points += 30
+		
+		if !body.name == "player":
+			Global.points += 25
 		
 		if randi() % 15 == 0:
 			instanciatePowerUp()
@@ -109,7 +111,9 @@ func _on_body_entered(body: Node2D) -> void:
 	elif size == 0:
 		#print("naaa")
 		queue_free()
-		Global.points += 60
+		
+		if !body.name == "player":
+			Global.points += 50
 	
 	body.queue_free()
 

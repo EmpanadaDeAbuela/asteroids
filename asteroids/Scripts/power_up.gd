@@ -11,6 +11,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.rotation += 0.0001
 	
 func _process(delta: float) -> void:
+	$AnimatedSprite2D.rotation += 0.01
 	global_position += movementVector.rotated(rotation) * speed * delta
 	
 	var screenSize = get_viewport_rect().size
@@ -18,7 +19,7 @@ func _process(delta: float) -> void:
 	
 	if (global_position.y+radius) < 0:
 		global_position.y = (screenSize.y+radius*0.999) #andá a saber por qué si es 1 no le gusta
-		print(radius)
+		#print(radius)
 		
 	if (global_position.y-radius) > screenSize.y:
 		global_position.y = -radius
@@ -31,4 +32,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if body.name == "bullet":
+		Global.points += 100
 	queue_free()
