@@ -87,7 +87,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		instanciateAs(1)
 		instanciateAs(1)
-		queue_free()
+		destruir()
 		
 		if !body.name == "player":
 			Global.points += 10
@@ -100,7 +100,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		instanciateAs(0)
 		instanciateAs(0)
-		queue_free()
+		destruir()
 		
 		if !body.name == "player":
 			Global.points += 25
@@ -110,7 +110,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 	elif size == 0:
 		#print("naaa")
-		queue_free()
+		destruir()
 		
 		if !body.name == "player":
 			Global.points += 50
@@ -128,3 +128,7 @@ func instanciatePowerUp():
 	var pu = powerUp.instantiate()
 	pu.position = position
 	get_parent().call_deferred("add_child", pu)
+
+func destruir():
+	get_parent().get_parent().asteroideEliminado()
+	queue_free()
