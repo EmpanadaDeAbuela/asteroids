@@ -80,7 +80,7 @@ func desempoderar():
 func shoot():
 	$cooldownTimer.start()
 	var bullet = bulletInst.instantiate()
-	var offset = Vector2.RIGHT.rotated(rotation) * 50  # 20 píxeles adelante
+	var offset = Vector2.RIGHT.rotated(rotation) * 60  # >20 píxeles adelante
 	bullet.global_position = global_position + offset
 	bullet.rotation = rotation
 	get_parent().add_child(bullet)
@@ -94,15 +94,21 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if powered and canDie:
 			desempoderar()
 			canDie = false
-			print(canDie)
+			#print(canDie)
 			#await get_tree().create_timer(1.0).timeout
 			canDie = true
-			print(canDie)
+			#print(canDie)
 		else:
 			queue_free()
 	elif area.name == "asteroidEstatua":
-		$"../VBoxContainer/Label4".text = "Los humanos son curiosos..."
+		if Global.english:
+			$"../VBoxContainer/Label4".text = "Humans are curious..."
+		else: 
+			$"../VBoxContainer/Label4".text = "Los humanos son curiosos..."
+			
 		queue_free()
-	else:
+	elif area.get_parent().name == "bullet" and Global.friendlyFire:
+		queue_free()
+	elif area.name == "powerUp":
 		empoderar()
 		#print("power")

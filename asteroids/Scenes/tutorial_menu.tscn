@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://3uph451bsbut"]
+[gd_scene load_steps=25 format=3 uid="uid://3uph451bsbut"]
 
 [ext_resource type="Texture2D" uid="uid://d4ehidfubbijj" path="res://Sprites/space.png" id="1_licsj"]
 [ext_resource type="Script" path="res://Scripts/tutorial_menu.gd" id="1_ohx6g"]
@@ -61,6 +61,18 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5g7e"]
 bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynwor"]
+bg_color = Color(0.4, 0.4, 0.4, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrv0l"]
+bg_color = Color(1, 1, 1, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8stvb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8de51"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="tutorial_menu" type="Control"]
 layout_mode = 3
@@ -206,4 +218,22 @@ texture = ExtResource("13_wd7uj")
 [node name="player" parent="." instance=ExtResource("2_rcwcu")]
 position = Vector2(710, 395)
 
+[node name="translate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 34.0
+offset_right = 999.0
+offset_bottom = 78.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1dlne")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxFlat_ynwor")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xrv0l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8stvb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8de51")
+text = " Español"
+alignment = 0
+
 [connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="translate" to="." method="_on_translate_pressed"]

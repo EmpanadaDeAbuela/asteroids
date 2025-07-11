@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drlkx7miftosx"]
+[gd_scene load_steps=7 format=3 uid="uid://drlkx7miftosx"]
 
 [ext_resource type="Script" path="res://Scripts/scoreManager.gd" id="1_njphc"]
 [ext_resource type="Texture2D" uid="uid://d4ehidfubbijj" path="res://Sprites/space.png" id="1_w0iid"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://rl8rt4fgrhtp" path="res://Fonts/cubic/cubic.ttf" id="4_gw221"]
 [ext_resource type="PackedScene" uid="uid://daf4qa5mos7qd" path="res://Prefabs/as_spawner.tscn" id="5_66jkd"]
 [ext_resource type="Script" path="res://Scripts/spawner_manager.gd" id="5_wqc7g"]
-[ext_resource type="PackedScene" uid="uid://c2xe8ml21bf0y" path="res://Prefabs/powerUp.tscn" id="7_cphot"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_njphc")
@@ -65,6 +64,3 @@ position = Vector2(384, 1101)
 volume_db = -10.0
 pitch_scale = 0.4
 bus = &"SFX"
-
-[node name="powerUp" parent="." instance=ExtResource("7_cphot")]
-position = Vector2(349, 601)
