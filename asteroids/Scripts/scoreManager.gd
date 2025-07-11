@@ -23,6 +23,10 @@ func _process(delta: float) -> void:
 		#Global.fadeAndChange("res://Scenes/menu.tscn")
 		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 		Global.points = 0
+	
+	if Input.is_action_just_pressed("esc"):
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+		Global.points = 0
 
 func sobrevivir():
 	Global.points += 1

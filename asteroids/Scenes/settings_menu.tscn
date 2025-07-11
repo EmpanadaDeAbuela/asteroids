@@ -1,8 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://ri4p4yku5c51"]
+[gd_scene load_steps=11 format=3 uid="uid://ri4p4yku5c51"]
 
 [ext_resource type="Texture2D" uid="uid://d4ehidfubbijj" path="res://Sprites/space.png" id="1_uah3w"]
 [ext_resource type="Script" path="res://Scripts/settings_menu.gd" id="1_wvqy6"]
 [ext_resource type="FontFile" uid="uid://rl8rt4fgrhtp" path="res://Fonts/cubic/cubic.ttf" id="3_3hcja"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm60u"]
+bg_color = Color(0.4, 0.4, 0.4, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx3v3"]
+bg_color = Color(1, 1, 1, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8m6uo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5qea"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnmr0"]
 bg_color = Color(1, 1, 1, 0.392157)
@@ -63,6 +75,42 @@ layout_mode = 2
 size_flags_vertical = 1
 max_value = 10.0
 
+[node name="throughWalls" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3hcja")
+theme_override_font_sizes/font_size = 31
+text = "lasers go through walls"
+
+[node name="lasersThroughWalls" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_3hcja")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxFlat_mm60u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vx3v3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8m6uo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r5qea")
+text = "off"
+
+[node name="friendlyFire" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3hcja")
+theme_override_font_sizes/font_size = 31
+text = "friendly fire"
+
+[node name="friendlyFire2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_3hcja")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxFlat_mm60u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vx3v3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8m6uo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r5qea")
+text = "off"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -89,4 +137,6 @@ text = "Back"
 
 [connection signal="value_changed" from="VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/lasersThroughWalls" to="." method="_on_lasers_through_walls_pressed"]
+[connection signal="pressed" from="VBoxContainer/friendlyFire2" to="." method="_on_friendly_fire_2_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]

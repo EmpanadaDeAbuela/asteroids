@@ -9,6 +9,7 @@ extends Control
 @onready var tutorial6 = $Label4
 
 @onready var translater = $translate
+@onready var back = $VBoxContainer2/Button
 
 func _ready() -> void:
 	
@@ -32,6 +33,7 @@ func _on_translate_pressed() -> void:
 
 
 func setSpanishText():
+	back.text = "volver"
 	translater.text = " english"
 	tutorial1.text = "Tu objetivo es hacer la mayor cantidad de puntos."
 	tutorial2.text = "Los puntos se suman al destruír asteroides y consumir objetos, pero se pierden al errar balas."
@@ -57,6 +59,7 @@ Se usa la ametralladora con la rueda del mouse
 pero sólo si primero se consume un power up"
 
 func setEnglishText():
+	back.text = "back"
 	translater.text = " español"
 	tutorial1.text = "Your goal is to score as many points as possible."
 	tutorial2.text = "Points are earned by destroying asteroids and collecting items, but lost by missing shots."
