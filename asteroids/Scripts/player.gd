@@ -80,7 +80,7 @@ func desempoderar():
 func shoot():
 	$cooldownTimer.start()
 	var bullet = bulletInst.instantiate()
-	var offset = Vector2.RIGHT.rotated(rotation) * 60  # >20 píxeles adelante
+	var offset = Vector2.RIGHT.rotated(rotation) * 70  # >20 píxeles adelante
 	bullet.global_position = global_position + offset
 	bullet.rotation = rotation
 	get_parent().add_child(bullet)
@@ -111,4 +111,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		queue_free()
 	elif area.name == "powerUp":
 		empoderar()
+		area.queue_free()
 		#print("power")

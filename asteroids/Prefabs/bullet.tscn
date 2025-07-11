@@ -7,7 +7,7 @@
 size = Vector2(58, 2.11268)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egywd"]
-size = Vector2(68, 3.52113)
+size = Vector2(68, 4.22535)
 
 [node name="bullet" type="CharacterBody2D"]
 collision_layer = 4

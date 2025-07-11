@@ -21,3 +21,13 @@ Referencias:
 Meteora es un albumazo 10/10
 
 Medieburger no es un albumazo pero también 10/10
+
+################################################################ 1.2 ########################################################################
+
+tutorial tanto en español como en inglés (hardcodeado porque nunca más voy a abrir este proyecto)
+
+en settings nuevo modo con balas que también atraviesan paredes y podés elegir si tus propias balas te matan o no
+
+podés tocar esc para salir al menú en medio del juego
+
+ahora jugable con las flechitas
