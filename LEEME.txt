@@ -31,3 +31,5 @@ en settings nuevo modo con balas que también atraviesan paredes y podés elegir
 podés tocar esc para salir al menú en medio del juego
 
 ahora jugable con las flechitas
+
+cursor es una mira

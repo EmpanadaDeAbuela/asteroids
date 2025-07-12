@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="meteora"
+config/name="Meteora"
 run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -25,6 +25,9 @@ GlobalScene="*res://Scenes/global_scene.tscn"
 window/size/viewport_width=1000
 window/size/viewport_height=1000
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://Sprites/aimCursor32.png"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
+mouse_cursor/tooltip_position_offset=Vector2(16, 16)
 
 [input]
 
