@@ -11,7 +11,7 @@ var sfxValue = 10
 #game mode settings
 var english = true
 var bulletsThroughWalls = false
-var friendlyFire = true
+var friendlyFire = false
 
 # asteroide grande eliminado	= +10 puntos
 # asteroide mediano eliminado	= +25 puntos

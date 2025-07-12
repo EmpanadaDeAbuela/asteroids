@@ -36,6 +36,7 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 func _on_lasers_through_walls_pressed() -> void:
 	Global.bulletsThroughWalls = !Global.bulletsThroughWalls
+	Global.friendlyFire = !Global.friendlyFire
 	setValues()
 
 
